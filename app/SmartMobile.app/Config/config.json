@@ -1,0 +1,38 @@
+{
+    "development": {
+        "debugEnable": true
+    },
+    "backbase": {
+        "localModelPath": "conf/anonymous.json",
+        "experience": "raiffeisen-app",
+        "serverURL": "http://ecs-dev.rbro.rbg.cc:8080/portalserver/",
+        "remoteContextRoot": "http://ecs-dev.rbro.rbg.cc:8080/portalserver/",
+        "syncedPreferences": {
+            "dbpSessionObject": "",
+            "bb.contact.selected": "",
+            "bb.product.selected": "",
+            "bb.transaction.selected": "",
+            "bb.payment.accounts": "",
+            "bb.payment.payment": ""
+        }
+    },
+    "security": {
+        "allowedDomains": [
+                           "*"
+                           ],
+        "sslPinning": {
+            "certificates": []
+        }
+    },
+    "template": {
+        "extraLibraries": [
+                           "static/features/[BBHOST]/vendor-bb-core-js/scripts/vendor-bb-core-js.js"
+                           ],
+        "scripts": [
+                    "window.raiffeisen = window.raiffeisen || {}; window.raiffeisen.platform = 'ios';"
+                    ],
+        "styles": [
+                   "static/features/[BBHOST]/theme-raiffeisen-retail/styles/theme-raiffeisen-retail.css"
+                   ]
+    }
+}
