@@ -4,7 +4,12 @@ package tests;
 import AutomationFramework.CommonTask;
 import AutomationFramework.Key;
 import AutomationFramework.TestData;
+import AutomationFramework.Waiting;
+import com.sun.tools.javah.Gen;
 import core.TestBase;
+import io.appium.java_client.MobileElement;
+import org.apache.poi.util.SystemOutLogger;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -17,6 +22,7 @@ import utils.Log4Test;
  * Created by azaharia on 16.05.2017.
  */
 public class ContactTest extends TestBase {
+
 
     @Test(groups = {TestData.CONTACT_GROUP, TestData.UI_GROUP}, description = "Verify the labels are correct on the Contact Screen for RO Profile")
     public void Contact_01() {
@@ -155,9 +161,9 @@ public class ContactTest extends TestBase {
     }
 
     @Test(groups = {TestData.CONTACT_GROUP, TestData.FNCT_GROUP}, description = "Verify call action")
-    public void Contact_04() {
+    public void Contact_04_Android() {
 
-        setUp("Contact_04", "Verify call action");
+        setUp("Contact_04_Android", "Verify call action");
 
         GeneralPage gp = new GeneralPage(appiumDriver);
         gp.navigateTo(TestData.CONTACT_TAB);
@@ -172,14 +178,37 @@ public class ContactTest extends TestBase {
 
         cp.tapElement(TestData.PHONE_ICON);
         Log4Test.test("Assert Correct number is displayed when pressing phone icon");
-        Assert.assertEquals(cp.getTextFor(TestData.PHONE_CONTACT_DEVICE), TestData.BOTH_PHONE_NUMBER_FORMAT_02, "Correct number is displayed");
+        Assert.assertEquals(cp.getTextFor(TestData.PHONE_CONTACT_DEVICE), TestData.iOS_CALLED_PHONE_NUMBER, "Correct number is displayed");
+    }
 
+    @Test(groups = {TestData.CONTACT_GROUP, TestData.FNCT_GROUP}, description = "Verify call action")
+    public void Contact_04_iOS(){
+        setUp("Contact_04_iOS","Verify call action");
+
+        GeneralPage gp = new GeneralPage(appiumDriver);
+        gp.navigateTo(TestData.CONTACT_TAB);
+
+        ContactPage cp = new ContactPage(appiumDriver);
+
+        cp.tapElement(TestData.PHONE_ARROW);
+        appiumDriver.getPageSource();
+
+            cp.closeSimAlert();  // needs to be worked on so it closes just when it is open
+
+        Log4Test.test("Assert correct number is being called when pressing the phone arrow");
+        Assert.assertEquals(cp.getTextFor(TestData.CALLED_NUMBER),TestData.iOS_CALLED_PHONE_NUMBER,"Correct number is displayed");
+        cp.cancelCall();
+
+        Log4Test.test("Assert Contact Tab Label");
+        softAssert.assertEquals(cp.getTextFor(TestData.CONTACT_TAB), TestData.BOTH_CONTACT, TestData.CONTACT_TAB + TestData.LABEL_IS_NOT_CORRECT);
+
+        softAssert.assertAll();
     }
 
     @Test(groups = {TestData.CONTACT_GROUP, TestData.FNCT_GROUP}, description = "Verify email action")
-    public void Contact_05() {
+    public void Contact_05_Android() {
 
-        setUp("Contact_05", "Verify email action");
+        setUp("Contact_05_Android", "Verify email action");
 
         GeneralPage gp = new GeneralPage(appiumDriver);
         gp.navigateTo(TestData.CONTACT_TAB);
@@ -197,6 +226,22 @@ public class ContactTest extends TestBase {
         CommonTask.tapButton(appiumDriver, Key.APP_SWITCH_BUTTON);
         Log4Test.test("Assert GMail is opening when pressing email icon");
         Assert.assertEquals(cp.getTextFor(TestData.GOOGLE_SCREEN), TestData.GMAIL + "something", "Gmail screen title is correct");
+    }
+
+    @Test(groups = {TestData.CONTACT_GROUP, TestData.FNCT_GROUP}, description = "Verify email action")
+    public void Contact_05_iOS(){
+
+        setUp("Contact_05_iOS","Verify email action");
+
+        GeneralPage gp = new GeneralPage(appiumDriver);
+        gp.navigateTo(TestData.CONTACT_TAB);
+
+        ContactPage cp = new ContactPage(appiumDriver);
+        cp.tapElement(TestData.EMAIL_ARROW);
+        Log4Test.test("Assert Mail is opening when pressing email arrow");
+        Assert.assertEquals(cp.getTextFor(TestData.iOS_MAIL_TO_FIELD),TestData.BOTH_EMAIL_ADDRESS,"Mail is opened and 'TO' field correctly filled");
+
+
     }
 
     @Test(groups = {TestData.CONTACT_GROUP, TestData.FNCT_GROUP}, description = "Verify website action")
@@ -219,6 +264,12 @@ public class ContactTest extends TestBase {
         cp.tapElement(TestData.WEBSITE_ICON);
         Log4Test.test("Assert Browser chooser is opening when pressing website icon");
         Assert.assertTrue(cp.isJustOnceButtonDisplayed(), "Browser chooser is present");
+    }
+
+    @Test
+    public void test(){
+
+
     }
 
 

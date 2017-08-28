@@ -12,6 +12,7 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 import utils.Log4Test;
 
 
@@ -68,6 +69,7 @@ public class GeneralPage {
     public MobileElement loginTab;
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/navigation_contact")
+    @iOSFindBy(xpath= "//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTabBar/XCUIElementTypeButton[2]")
     public MobileElement contactTab;
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/navigation_locator")

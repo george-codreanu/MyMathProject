@@ -3,10 +3,16 @@ package pages;
 import AutomationFramework.CommonTask;
 import AutomationFramework.TestData;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.FindsByAccessibilityId;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSFindBy;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.internal.FindsByName;
+import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 import utils.Log4Test;
 
 
@@ -22,17 +28,26 @@ public class ContactPage extends GeneralPage {
 
     // -------------------------------- Locators
 
+    // -------------- Tab
+
+    @AndroidFindBy (id = "ro.raiffeisen.smartmobile.development:id/largeLabel")
+    @iOSFindBy(xpath = "//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeNavigationBar/XCUIElementTypeStaticText")
+    private MobileElement contactTabLabel;
+
     // -------------- Header
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/tv_toolbar_title")
+    @iOSFindBy (xpath = "//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeNavigationBar/XCUIElementTypeStaticText")
     private MobileElement contactHeader;
 
     // --------------
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/text_question_title")
+    @iOSFindBy(xpath = "//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeStaticText")
     private MobileElement questionlabel;
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/text_suggestions")
+    @iOSFindBy(xpath = "//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeStaticText[2]")
     private MobileElement suggestionLabel;
 
     // -------------- Phone
@@ -40,16 +55,32 @@ public class ContactPage extends GeneralPage {
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/rl_call_us")
     public MobileElement callAction;
 
+    //@iOSFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"+40 (21) 306 55 55\"]")
+    //private MobileElement calledPhoneNumber= (MobileElement) driver.findElement(By.name("+40 (21) 306 55 55"));
+
+    @iOSFindBy(id = "No SIM Card Installed")
+    private MobileElement simAlert;
+
+    @iOSFindBy( id = "OK")
+    private MobileElement simAlertButton;
+
+    @iOSFindBy(id = "Cancel")
+    private MobileElement cancelCall;
+
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/image_phone_details")
+    @iOSFindBy(xpath = "//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeImage")
     private MobileElement phoneIcon;
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/text_phone_details")
+    @iOSFindBy(xpath = "//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeStaticText")
     private MobileElement phoneDetailsLabel;
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/text_phone_number")
+    @iOSFindBy(id = "\u202A\u202D+40 (21) 306 55 55\u202C\u202C")
     private MobileElement phoneNumber;
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/image_arrow_phone")
+    @iOSFindBy(xpath = "//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]")
     private MobileElement phoneArrow;
 
     // -------------- Email
@@ -58,16 +89,23 @@ public class ContactPage extends GeneralPage {
     private MobileElement mailAction;
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/image_email")
+    @iOSFindBy(xpath = "//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[4]/XCUIElementTypeImage")
     private MobileElement emailIcon;
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/text_email")
+    @iOSFindBy(xpath = "//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[4]/XCUIElementTypeStaticText")
     private MobileElement emailLabel;
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/text_email_address")
+    @iOSFindBy(xpath = "//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[4]/XCUIElementTypeStaticText[2]")
     private MobileElement emailAddress;
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/image_arrow_mail")
+    @iOSFindBy(xpath = "//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[4]/XCUIElementTypeImage[2]")
     private MobileElement emailArrow;
+
+    @iOSFindBy(xpath = "//XCUIElementTypeTextField[@name=\"toField\"]")
+    private MobileElement mailToField;
 
     // -------------- Website
 
@@ -75,33 +113,42 @@ public class ContactPage extends GeneralPage {
     private MobileElement websiteAction;
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/image_visit_us")
+    @iOSFindBy(xpath = "//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[6]/XCUIElementTypeImage")
     private MobileElement websiteIcon;
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/text_website")
+    @iOSFindBy(xpath = "//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[6]/XCUIElementTypeStaticText")
     private MobileElement websiteLabel;
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/text_website_address")
+    @iOSFindBy(xpath = "//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[6]/XCUIElementTypeStaticText[2]")
     private MobileElement websiteAddress;
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/image_arrow_website")
+    @iOSFindBy(xpath = "//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[6]/XCUIElementTypeImage[2]")
     private MobileElement websiteArrow;
 
 
     // -------------- Social
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/text_social_media")
+    @iOSFindBy(xpath = "//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeStaticText")
     private MobileElement followUsLabel;
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/image_facebook")
+    @iOSFindBy(xpath = "//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[2]")
     private MobileElement facebookIcon;
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/image_linkedin")
+    @iOSFindBy(xpath = "//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[3]")
     private MobileElement linkedinIcon;
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/image_youtube")
+    @iOSFindBy(xpath = "//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[4]")
     private MobileElement youtubeIcon;
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/image_instagram")
+    @iOSFindBy(xpath = "//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[5]")
     private MobileElement instagramIcon;
 
 
@@ -193,10 +240,10 @@ public class ContactPage extends GeneralPage {
                 Assert.fail(Log4Test.error("Chosen param for 'getTextFor'  element is not correct : " + elementName));
                 break;
             case TestData.CONTACT_TAB:
-                value = CommonTask.getText(contactTab, TestData.CONTACT_TAB + TestData.LABEL);
+                value = CommonTask.getText(contactTabLabel, TestData.CONTACT_TAB + TestData.LABEL);
                 break;
             case TestData.CONTACT_HEADER:
-                value = CommonTask.getText(header, TestData.CONTACT_HEADER + TestData.LABEL);
+                value = CommonTask.getText(contactHeader, TestData.CONTACT_HEADER + TestData.LABEL);
                 break;
             case TestData.QUESTION:
                 value = CommonTask.getText(questionlabel, TestData.QUESTION + TestData.LABEL);
@@ -228,11 +275,29 @@ public class ContactPage extends GeneralPage {
             case TestData.PHONE_CONTACT_DEVICE:
                 value = CommonTask.getText(phoneContactAndroid, TestData.PHONE_CONTACT_DEVICE + TestData.LABEL);
                 break;
-            case TestData.GOOGLE_SCREEN:
-                value = CommonTask.getText(googleScreen, TestData.GOOGLE_SCREEN + TestData.LABEL);
+            case TestData.CALLED_NUMBER:
+                value = CommonTask.getText(phoneNumber, TestData.CALLED_NUMBER + TestData.LABEL);
                 break;
+            case TestData.iOS_MAIL_TO_FIELD:
+                value = mailToField.getAttribute("value");
         }
         return value;
     }
 
+    public void cancelCall(){
+
+        CommonTask.tapButton(driver,cancelCall,TestData.CANCEL_CALL_BUTTON);
+    }
+
+    public boolean isSimAlertDisplayed() {
+        driver.getPageSource();
+        if (simAlertButton.getSize() != null) {
+            return true;
+        }
+        return false;
+    }
+
+    public void closeSimAlert(){
+        CommonTask.tapButton(driver, simAlertButton,TestData.SIM_OK_BUTTON);
+    }
 }

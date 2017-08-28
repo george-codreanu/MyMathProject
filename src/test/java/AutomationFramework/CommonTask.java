@@ -21,7 +21,7 @@ public class CommonTask {
 
     public static String getOS(){
         String clientOS = System.getProperty("clientOS");
-        return "Android";
+        return "iOS";
         //return clientOS;
     }
 
@@ -140,16 +140,6 @@ public class CommonTask {
         return text;
     }
 
-    public static String getAttribute(MobileElement element, String attribute, String elementName) {
-        String text = "";
-                try {
-                    Log4Test.info("- getting text for: " + elementName);
-                    text = element.getAttribute(attribute);
-                }catch (NoSuchElementException e) {
-                    Assert.fail(Log4Test.error("Element is not found : " + elementName));
-                }
-        return text;
-    }
 
     public static String getAttributeAsText(MobileElement element, String attribute, String elementName) {
         String stringValueOfAttribute = "";

@@ -50,12 +50,14 @@ public abstract class TestBase {
                 break;
             case "iOS":
                 DesiredCapabilities capabilities2 = new DesiredCapabilities();
-                capabilities2.setCapability("app", new File("app/SmartMobile.app").getAbsolutePath());
-                capabilities2.setCapability("appPackage", "ro.raiffeisen.smartmobile.development");
+               // capabilities2.setCapability("app", new File("app/SmartMobile.app").getAbsolutePath());
+                capabilities2.setCapability("bundleId", "ro.raiffeisen.new.smartmobile");
                 capabilities2.setCapability("automationName", "XCUITest");
                 capabilities2.setCapability("platformName", "iOS");
-                capabilities2.setCapability("deviceName", "iPhone 6 Plus");
-                capabilities2.setCapability("platformVersion","10.3");
+                capabilities2.setCapability("deviceName", "iPhone");
+                capabilities2.setCapability("udid","58af6ab82861d2cc2bf2d621758a2a2d29a9134b");
+                capabilities2.setCapability("platformVersion","10.2");
+                capabilities2.setCapability("autoAcceptAlerts",true);
                 capabilities2.setCapability("newCommandTimeout", 200);
                 appiumDriver = new IOSDriver<MobileElement>(remoteAddress, capabilities2);
                 break;

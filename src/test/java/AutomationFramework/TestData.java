@@ -37,6 +37,9 @@ public class TestData {
     public static final int MEDIUM_WAIT = 10;
     public static final int LONG_WAIT = 20;
 
+    // -------------------------------------------------------------------- ATTRIBUTES
+    public static final String VALUE = "value";
+    public static final String NAME = "name";
 
     // -------------------------------------------------------------------- TEST GROUPS
     // ---------- Client Group
@@ -203,6 +206,7 @@ public class TestData {
     public static final String WEBSITE = "website";
     public static final String WEBSITE_ADDRESS = "website address";
     public static final String FOLLOW_US = "follow us";
+    public static final String CALLED_NUMBER = "called number";
 
     public static final String PHONE_ARROW = "phone arrow";
     public static final String EMAIL_ICON = "email icon";
@@ -213,13 +217,14 @@ public class TestData {
     public static final String LINKEDIN_ICON = "linkedin icon";
     public static final String YOUTUBE_ICON = "youtube icon";
     public static final String INSTAGRAM_ICON = "instagram icon";
-
+    public static final String iOS_MAIL_TO_FIELD = "Mail 'TO' field";
     // --- BOTH LANGUAGES
     public static final String BOTH_CONTACT = "Contact";
     public static final String BOTH_PHONE_NUMBER_FORMAT_01= "+4 021 306 55 55";
     public static final String BOTH_PHONE_NUMBER_FORMAT_02= "+40 21 306 5555";
     public static final String BOTH_EMAIL_ADDRESS = "online@raiffeisen.ro";
     public static final String BOTH_WEBSITE_ADDRESS = "www.raiffeisen.ro";
+    public static final String iOS_CALLED_PHONE_NUMBER = "\u202A\u202D+40 (21) 306 55 55\u202C\u202C";
 
     // --- RO
     public static final String RO_CONTACT_DETAILS = "Detalii contact";
@@ -239,6 +244,8 @@ public class TestData {
     public static final String EN_WEBSITE_LABEL = "Visit us at";
     public static final String EN_FOLLOW_US = "FOLLOW US ON";
 
+    public static final String CANCEL_CALL_BUTTON = "cancel call button";
+    public static final String SIM_OK_BUTTON = " sim alert OK button";
 
 
     // ----------------------------------------------------- Exchange Rates
