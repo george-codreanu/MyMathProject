@@ -239,7 +239,8 @@ public class ContactTest extends TestBase {
         ContactPage cp = new ContactPage(appiumDriver);
         cp.tapElement(TestData.EMAIL_ARROW);
         Log4Test.test("Assert Mail is opening when pressing email arrow");
-        Assert.assertEquals(cp.getTextFor(TestData.iOS_MAIL_TO_FIELD),TestData.BOTH_EMAIL_ADDRESS,"Mail is opened and 'TO' field correctly filled");
+        assert .
+        Assert.assertEquals(cp.getTextFor(TestData.iOS_MAIL_TO_FIELD),TestData.BOTH_EMAIL_ADDRESS,"TO' field filled incorrectly -> ");
 
 
     }

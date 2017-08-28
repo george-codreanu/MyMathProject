@@ -285,7 +285,7 @@ public class ContactPage extends GeneralPage {
     }
 
     public String getToFieldFromMail(){
-        CommonTask.getAttributeAsText(mailToField,TestData.VALUE,"mail TO field")
+       return CommonTask.getAttributeAsText(mailToField,TestData.VALUE,"mail 'TO' field");
     }
 
     public void cancelCall(){
