@@ -29,48 +29,18 @@ public abstract class TestBase {
     public SoftAssert softAssert = new SoftAssert();
 
 
-
-  /*  @BeforeClass
-    protected void setUp() throws MalformedURLException {
-        URL remoteAddress = new URL("http://127.0.0.1:4723/wd/hub");
-
-
-        appiumDriver = new AndroidDriver<MobileElement>(remoteAddress, createAppiumCapabilities());
-    }
-
-    *//**
-     * Create Appium DesiredCapabilities
-     *//*
-    private DesiredCapabilities createAppiumCapabilities (){
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-      *//*  capabilities.setCapability("app", new File(
-                "app/latest4.apk").getAbsolutePath());*//*
-        capabilities.setCapability("appPackage", TestData.APP_PACKAGE);
-        capabilities.setCapability("appActivity", TestData.APP_ACTIVITY);
-        capabilities.setCapability(CapabilityType.VERSION, 4.4);
-        capabilities.setCapability("automationName", "Appium");
-        capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("deviceName", "3a71fc81047404b6");
-        capabilities.setCapability("newCommandTimeout", 200);
-
-        return capabilities;
-    }
-*/
-
     @BeforeClass
     protected void setUp() throws MalformedURLException {
         URL remoteAddress = new URL("http://127.0.0.1:4723/wd/hub");
 
 
-        //String clientOS = System.getProperty("clientOS");
-
         switch(CommonTask.getOS()){
             case "Android":
                 DesiredCapabilities capabilities = new DesiredCapabilities();
-                capabilities.setCapability("app", new File(
-                        "app/latest.apk").getAbsolutePath());
-                //capabilities.setCapability("appPackage", TestData.APP_PACKAGE);
-                //capabilities.setCapability("appActivity", TestData.APP_ACTIVITY);
+              /*  capabilities.setCapability("app", new File(
+                        "app/latest.apk").getAbsolutePath());*/
+                capabilities.setCapability("appPackage", TestData.APP_PACKAGE);
+                capabilities.setCapability("appActivity", TestData.APP_ACTIVITY);
                 capabilities.setCapability(CapabilityType.VERSION, 4.4);
                 capabilities.setCapability("automationName", "Appium");
                 capabilities.setCapability("platformName", "iOS");
@@ -116,6 +86,7 @@ public abstract class TestBase {
         Log4Test.info("                                                                                                    ");
         Log4Test.info("------------------- START TEST");
         appiumDriver.resetApp();
+
     }
 
     @AfterClass (alwaysRun = true)

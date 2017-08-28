@@ -49,8 +49,8 @@ public class GeneralPage {
 
     // Gmail Locators
 
-    @AndroidFindBy(id = "com.google.android.gm:id/welcome_tour_title")
-    public MobileElement googleMailWelcomeMessage;
+    @AndroidFindBy(xpath = ("//*[@content-desc='Gmail']"))
+    public MobileElement googleScreen;
 
 
     //Language options
@@ -65,23 +65,28 @@ public class GeneralPage {
 
     // Tabs and headers
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/navigation_login")
-    private MobileElement loginTab;
-
-    @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/navigation_locator")
-    private MobileElement locatorTab;
-
-    @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/navigation_interest_rates")
-    private MobileElement interestRatesTab;
+    public MobileElement loginTab;
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/navigation_contact")
-    private MobileElement contactTab;
+    public MobileElement contactTab;
+
+    @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/navigation_locator")
+    public MobileElement locatorTab;
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/navigation_exchange")
-    private MobileElement exchangeRatesTab;
+    public MobileElement exchangeRatesTab;
+
+    @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/navigation_interest_rates")
+    public MobileElement interestRatesTab;
+
+
+    @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/navigation_dashboard")
+    public MobileElement dashboardTab;
+
 
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/tv_toolbar_title")
-    private MobileElement header;
+    public MobileElement header;
 
 
     // -------------------------------- Methods
@@ -95,20 +100,13 @@ public class GeneralPage {
 
         Log4Test.info("- selecting " + language + " language");
 
-        switch (CommonTask.getOS()) {
-            case "iOS":
-                if (language == TestData.EN) {
-                    CommonTask.clickElement(driver, languageENButton, TestData.EN_LANGUAGE + TestData.BUTTON);}
-                if (language == TestData.RO) {
-                    CommonTask.clickElement(driver, languageROButton, TestData.RO_LANGUAGE + TestData.BUTTON);}
+        switch (language) {
+            case "EN":
+                CommonTask.tapButton(driver, languageENButton, TestData.EN_LANGUAGE + TestData.BUTTON);
                 break;
-            case "Android":
-                if (language == TestData.EN) {
-                    CommonTask.tapButton(driver, languageENButton, TestData.EN_LANGUAGE + TestData.BUTTON);}
-                if (language == TestData.RO) {
-                    CommonTask.tapButton(driver, languageROButton, TestData.RO_LANGUAGE + TestData.BUTTON);}
+            case "RO":
+                CommonTask.tapButton(driver, languageROButton, TestData.RO_LANGUAGE + TestData.BUTTON);
                 break;
-
             default:
                 Assert.fail(Log4Test.error("Selected Language Profile is not correct : " + language));
                 break;
@@ -117,28 +115,29 @@ public class GeneralPage {
 
 
 
-//                    if (language.equals(TestData.RO))
-//                        CommonTask.tapButton(driver, languageROButton, TestData.RO_LANGUAGE + TestData.BUTTON);
-//                    else if (language.equals(TestData.EN))
-//                        CommonTask.tapButton(driver, languageENButton, TestData.EN_LANGUAGE + TestData.BUTTON);
-//                    else Assert.fail(Log4Test.error("Selected Language Profile is not correct : " + language));
-
-
-
     //USE ENGLISH NAMING VAR
     public void navigateTo(String tabName) {
-        if (tabName.equals(TestData.LOGIN_TAB))
-            CommonTask.tapButton(driver, loginTab, TestData.LOGIN_TAB);
-        else if (tabName.equals(TestData.LOCATOR_TAB))
-            CommonTask.tapButton(driver, locatorTab, TestData.LOCATOR_TAB);
-        else if (tabName.equals(TestData.INTEREST_RATES_TAB))
-            CommonTask.tapButton(driver, interestRatesTab, TestData.INTEREST_RATES_TAB);
-        else if (tabName.equals(TestData.CONTACT_TAB))
-            CommonTask.tapButton(driver, contactTab, TestData.CONTACT_TAB);
-        else if (tabName.equals(TestData.EXCHANGE_RATES_TAB))
-            CommonTask.tapButton(driver, exchangeRatesTab, TestData.EXCHANGE_RATES_TAB);
 
-        else Assert.fail(Log4Test.error("Navigation Tab is not correct : " + tabName));
+        switch (tabName) {
+            case TestData.LOGIN_TAB:
+                CommonTask.tapButton(driver, loginTab, TestData.LOGIN_TAB);
+                break;
+            case TestData.CONTACT_TAB:
+                CommonTask.tapButton(driver, contactTab, TestData.CONTACT_TAB);
+                break;
+            case TestData.LOCATOR_TAB:
+                CommonTask.tapButton(driver, locatorTab, TestData.LOCATOR_TAB);
+                break;
+            case TestData.EXCHANGE_RATES_TAB:
+                CommonTask.tapButton(driver, exchangeRatesTab, TestData.EXCHANGE_RATES_TAB);
+                break;
+            case TestData.INTEREST_RATES_TAB:
+                CommonTask.tapButton(driver, interestRatesTab, TestData.INTEREST_RATES_TAB);
+                break;
+            default:
+                Assert.fail(Log4Test.error("Navigation Tab is not correct : " + tabName));
+                break;
+        }
         Log4Test.info("------------- User is on " + tabName.toUpperCase());
     }
 

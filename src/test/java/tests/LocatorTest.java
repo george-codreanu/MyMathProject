@@ -1,5 +1,7 @@
 package tests;
 
+import io.appium.java_client.android.Connection;
+import org.testng.Assert;
 import utils.ADB;
 import AutomationFramework.TestData;
 import core.TestBase;
@@ -7,8 +9,9 @@ import org.testng.annotations.Test;
 import pages.GeneralPage;
 import pages.LocatorPage;
 import utils.Log4Test;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.Connection;
 
-import static org.testng.Assert.assertEquals;
 
 /**
  * Created by azaharia on 05.05.2017.
@@ -22,7 +25,7 @@ public class LocatorTest extends TestBase {
         setUp("Locator_01", "Verify the labels are correct on the Locator Screen for RO Profile");
 
         GeneralPage gp = new GeneralPage(appiumDriver);
-      //  gp.selectLanguageProfile(TestData.RO);
+        gp.selectLanguageProfile(TestData.RO);
         gp.navigateTo(TestData.LOCATOR_TAB);
 
         LocatorPage lp = new LocatorPage(appiumDriver);

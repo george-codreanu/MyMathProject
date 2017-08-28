@@ -61,15 +61,19 @@ public class TestData {
 
     // -------------------------------------------------------------------- STATIC TEXT
     // ---------------------------- GENERAL TEXT
+
+    // ---- elements
     public static final String RAIFF_APP = "raiffeisen app";
     public static final String PHONE_CONTACT_DEVICE = "phone contact device";
-    public static final String GOOGLE_MAIL_WELCOME_MESSAGE = "google mail welcome message";
+    public static final String GOOGLE_SCREEN = "google screen";
     public static final String JUST_ONCE_BUTTON = "just once button";
     public static final String CALL_BUTTON = "call buton";
     public static final String SHARE_BUTTON = "share button";
     public static final String PHONE_ICON = "phone icon";
     public static final String CALL = "Call";
     public static final String SHARE = "Share";
+    // ---
+    public static final String GMAIL = "Gmail";
 
 
     // ----------------------------------------------------- Login
@@ -212,7 +216,8 @@ public class TestData {
 
     // --- BOTH LANGUAGES
     public static final String BOTH_CONTACT = "Contact";
-    public static final String BOTH_PHONE_NUMBER = "+4 021 306 55 55";
+    public static final String BOTH_PHONE_NUMBER_FORMAT_01= "+4 021 306 55 55";
+    public static final String BOTH_PHONE_NUMBER_FORMAT_02= "+40 21 306 5555";
     public static final String BOTH_EMAIL_ADDRESS = "online@raiffeisen.ro";
     public static final String BOTH_WEBSITE_ADDRESS = "www.raiffeisen.ro";
 
@@ -244,6 +249,50 @@ public class TestData {
     // --- BOTH LANGUAGES
     // --- RO
     // --- EN
+
+
+
+
+    // ----------------------------------------------------- New Product
+    // --- elements
+    public static final String ACCOUNTS = "Accounts";
+    public static final String CARDS = "Cards";
+    public static final String MONEY = "Money";
+    public static final String SERVICES = "Services";
+
+    // --- EN
+    public static final String EN_ACCOUNTS_LABEL = "Accounts";
+    public static final String EN_ACCOUNTS_DESCRIPTION = "We will help you to open the suitable account for you";
+    public static final String EN_ACCOUNTS_BUTTON_LABEL = "Let's start";
+
+    public static final String EN_CARDS_LABEL = "Cards";
+    public static final String EN_CARDS_DESCRIPTION = "Apply for a card from our offer";
+    public static final String EN_CARDS_BUTTON_LABEL = "Apply";
+
+    public static final String EN_MONEY_LABEL = "Money";
+    public static final String EN_MONEY_DESCRIPTION = "You need money?";
+    public static final String EN_MONEY_BUTTON_LABEL = "Check offers";
+
+    public static final String EN_SERVICES_LABEL = "Services";
+    public static final String EN_SERVICES_DESCRIPTION = "Choose the service for your needs";
+    public static final String EN_SERVICES_BUTTON_LABEL = "Choose service";
+
+    // --- RO
+    public static final String RO_ACCOUNTS_LABEL = "Conturi";
+    public static final String RO_ACCOUNTS_DESCRIPTION = "Te ajutam sa deschizi contul care ti se potriveste";
+    public static final String RO_ACCOUNTS_BUTTON_LABEL = "Hai să începem";
+
+    public static final String RO_CARDS_LABEL = "Carduri";
+    public static final String RO_CARDS_DESCRIPTION = "Aplica pentru unul dintre cardurile din oferta noastra";
+    public static final String RO_CARDS_BUTTON_LABEL = "Aplica";
+
+    public static final String RO_MONEY_LABEL = "Bani";
+    public static final String RO_MONEY_DESCRIPTION = "Ai nevoie de o suma de bani";
+    public static final String RO_MONEY_BUTTON_LABEL = "Verifica oferte";
+
+    public static final String RO_SERVICES_LABEL = "Servicii";
+    public static final String RO_SERVICES_DESCRIPTION = "Alege serviciul care raspunde nevoilor tale";
+    public static final String RO_SERVICES_BUTTON_LABEL = "Alege serviciu";
 
 
 

@@ -25,10 +25,9 @@ public class CommonTask {
         //return clientOS;
     }
 
-
     public static void switchToRaiffApp(MobileDriver driver){
         CommonTask.tapButton(driver, Key.APP_SWITCH_BUTTON);
-        MobileElement raiffeiseinApp = (MobileElement) driver.findElement(By.id(TestData.RAIFF_APP_NAME));
+        MobileElement raiffeiseinApp = (MobileElement) driver.findElement(By.xpath("//*[@content-desc='SmartMobile (development)']"));
         CommonTask.tapButton(driver, raiffeiseinApp, TestData.RAIFF_APP);
     }
 
@@ -38,39 +37,26 @@ public class CommonTask {
             Log4Test.info("- moving to element : " + elementName);
             action.moveToElement(element).build().perform();
         } catch (NoSuchElementException e) {
-            Assert.fail(Log4Test.error("Element is not found"));
+            Assert.fail(Log4Test.error("Element is not found : " + elementName));
         }
     }
 
 
-    public static void clearElement(MobileDriver driver, MobileElement element) {
+    public static void clearElement(MobileElement element, String elementName) {
         try {
-            Log4Test.info("- clearing element");
+            Log4Test.info("- clearing element : " + elementName);
             element.clear();
         } catch (NoSuchElementException e) {
-            Assert.fail(Log4Test.error("Element is not found"));
+            Assert.fail(Log4Test.error("Element is not found : " + elementName));
         }
     }
 
-    public static void sendKeys(MobileDriver driver, MobileElement element, String text, String field){
+    public static void sendKeys(MobileElement element, String text, String elementName){
         try {
-            Log4Test.info("- sending keys : " + text + " : to " + field);
+            Log4Test.info("- sending keys : " + text + " : to " + elementName);
             element.sendKeys(text);
         } catch (NoSuchElementException e) {
-            Assert.fail(Log4Test.error("Element is not found"));
-        }
-    }
-
-    public static void clickElement(MobileDriver driver, MobileElement element, String elementName){
-        try {
-            //Waiting for the element to be available
-            Waiting.elementToBeClickable(driver, element, elementName);
-            //Tap element
-            moveToElement(driver, element,elementName);
-            Log4Test.info("- clicking element : " + elementName);
-            element.click();
-        } catch (NoSuchElementException e) {
-            Assert.fail(Log4Test.error("Element is not found"));
+            Assert.fail(Log4Test.error("Element is not found : " + elementName));
         }
     }
 
@@ -97,40 +83,39 @@ public class CommonTask {
                     Log4Test.info("- clicking element:" + elementName);
                     element.click();
                 }catch (NoSuchElementException e){
-                    Assert.fail(Log4Test.error("Element is not found"));
+                    Assert.fail(Log4Test.error("Element is not found : " + elementName));
                 }
         }
 
     }
-
 
     public static void tapButton(MobileDriver driver, Key key) {
         try {
             Log4Test.info("- tapping " + key);
             ((AndroidDriver) driver).pressKeyCode(key.getValue());
         } catch (NoSuchElementException e) {
-            Assert.fail(Log4Test.error("Element is not found"));
+            Assert.fail(Log4Test.error("Key is not found : " + key));
         }
     }
 
 
-    public static void setTextField(MobileDriver driver, MobileElement element, String text, String fieldName) {
+    public static void setTextField(MobileDriver driver, MobileElement element, String text, String elementName) {
         //Wait for the field to be available
-        Waiting.elementToBeClickable(driver, element, fieldName);
+        Waiting.elementToBeClickable(driver, element, elementName);
         //Enter "item" into the field
-        sendKeys(driver, element, text, fieldName);
+        sendKeys(element, text, elementName);
         //Waiting text to be present
-        Waiting.textToBePresentInElement(driver, element, text, fieldName);
+        Waiting.textToBePresentInElement(driver, element, text, elementName);
     }
 
-    public static void setInputField(MobileDriver driver, MobileElement element, String text, String field) {
+    public static void setInputField(MobileDriver driver, MobileElement element, String text, String elementName) {
         //Wait for the field to be available
-        Waiting.elementToBeClickable(driver, element, field);
+        Waiting.elementToBeClickable(driver, element, elementName);
         //Enter "item" into the field
-        sendKeys(driver, element, text, field);
+        sendKeys(element, text, elementName);
     }
 
-    public static String getText(MobileDriver driver, MobileElement element, String elementName) {
+    public static String getText(MobileElement element, String elementName) {
         String text = "";
 
         switch (CommonTask.getOS()) {
@@ -141,63 +126,73 @@ public class CommonTask {
                     Log4Test.info("- getting text for: " + elementName);
                     text = element.getText();
                 } catch (NoSuchElementException e) {
-                    Assert.fail(Log4Test.error("Element is not found"));
+                  Log4Test.error("Element is not found : " + elementName);
                 }
                 break;
             case "iOS":
                 try {
-                    Log4Test.info("-getting text for: " + elementName);
+                    Log4Test.info("- getting text for: " + elementName);
                     text = element.getAttribute("name");
                 }catch (NoSuchElementException e) {
-                    Assert.fail(Log4Test.error("Element is not found"));
+                    Assert.fail(Log4Test.error("Element is not found : " + elementName));
                 }
         }
         return text;
     }
 
-    public static String getAttributeAsText(MobileDriver driver, MobileElement element, String attribute, String elementName) {
+    public static String getAttribute(MobileElement element, String attribute, String elementName) {
+        String text = "";
+                try {
+                    Log4Test.info("- getting text for: " + elementName);
+                    text = element.getAttribute(attribute);
+                }catch (NoSuchElementException e) {
+                    Assert.fail(Log4Test.error("Element is not found : " + elementName));
+                }
+        return text;
+    }
+
+    public static String getAttributeAsText(MobileElement element, String attribute, String elementName) {
         String stringValueOfAttribute = "";
         try {
             //Get element Attribute
             Log4Test.info("- getting attribute as String for : " + elementName);
             stringValueOfAttribute = element.getAttribute(attribute);
         } catch (NoSuchElementException e) {
-            Assert.fail(Log4Test.error("Element is not found"));
+            Assert.fail(Log4Test.error("Element is not found : " + elementName));
         }
 
         return stringValueOfAttribute;
     }
 
 
-    public static Boolean isElementEnabledAndDisplayed(MobileDriver driver, MobileElement element, String elementName){
+    public static Boolean isElementEnabledAndDisplayed(MobileElement element, String elementName){
         try {
-            return isDisplayed(driver, element, elementName) && isEnabled(driver, element, elementName);
+            return isDisplayed(element, elementName) && isEnabled(element, elementName);
         } catch (NoSuchElementException e) {
-            Assert.fail(Log4Test.error("Element is not found"));
+            Log4Test.error("Element is not found : " + elementName);
             return false;
         }
     }
 
-    public static Boolean isEnabled(MobileDriver driver, MobileElement element, String elementName){
+    public static Boolean isEnabled(MobileElement element, String elementName){
         try {
             Log4Test.info("- verifying if " + elementName + " is enabled");
             return element.isEnabled();
         } catch (NoSuchElementException e) {
-            Assert.fail(Log4Test.error("Element is not found"));
+            Assert.fail(Log4Test.error("Element is not found : " + elementName));
             return false;
         }
     }
 
-    public static Boolean isDisplayed(MobileDriver driver, MobileElement element, String elementName){
+    public static Boolean isDisplayed(MobileElement element, String elementName){
         try {
             Log4Test.info("- verifying if " + elementName + " is displayed");
             return element.isDisplayed();
         } catch (NoSuchElementException e) {
-            Assert.fail(Log4Test.error("Element is not found"));
+            Assert.fail(Log4Test.error("Element is not found : " + elementName));
             return false;
         }
     }
-
 
 
 

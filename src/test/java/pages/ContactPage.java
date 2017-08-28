@@ -22,11 +22,6 @@ public class ContactPage extends GeneralPage {
 
     // -------------------------------- Locators
 
-    // -------------- Tab
-
-    @AndroidFindBy (id = "ro.raiffeisen.smartmobile.development:id/largeLabel")
-    private MobileElement contactTabLabel;
-
     // -------------- Header
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/tv_toolbar_title")
@@ -151,34 +146,34 @@ public class ContactPage extends GeneralPage {
             default: Assert.fail(Log4Test.error("Chosen param for 'isDisplayed' element is not correct : " + elementName));
                 break;
             case TestData.PHONE_ICON:
-                value = CommonTask.isElementEnabledAndDisplayed(driver, phoneIcon, TestData.PHONE_ICON);
+                value = CommonTask.isElementEnabledAndDisplayed(phoneIcon, TestData.PHONE_ICON);
                 break;
             case TestData.PHONE_ARROW:
-                value = CommonTask.isElementEnabledAndDisplayed(driver, phoneArrow, TestData.PHONE_ARROW);
+                value = CommonTask.isElementEnabledAndDisplayed(phoneArrow, TestData.PHONE_ARROW);
                 break;
             case TestData.EMAIL_ICON:
-                value = CommonTask.isElementEnabledAndDisplayed(driver, emailIcon, TestData.EMAIL_ICON);
+                value = CommonTask.isElementEnabledAndDisplayed(emailIcon, TestData.EMAIL_ICON);
                 break;
             case TestData.EMAIL_ARROW:
-                value = CommonTask.isElementEnabledAndDisplayed(driver, emailArrow, TestData.EMAIL_ARROW);
+                value = CommonTask.isElementEnabledAndDisplayed(emailArrow, TestData.EMAIL_ARROW);
                 break;
             case TestData.WEBSITE_ICON:
-                value = CommonTask.isElementEnabledAndDisplayed(driver, websiteIcon, TestData.WEBSITE_ICON);
+                value = CommonTask.isElementEnabledAndDisplayed(websiteIcon, TestData.WEBSITE_ICON);
                 break;
             case TestData.WEBSITE_ARROW:
-                value = CommonTask.isElementEnabledAndDisplayed(driver, websiteArrow, TestData.WEBSITE_ARROW);
+                value = CommonTask.isElementEnabledAndDisplayed(websiteArrow, TestData.WEBSITE_ARROW);
                 break;
             case TestData.FACEBOOK_ICON:
-                value = CommonTask.isElementEnabledAndDisplayed(driver, facebookIcon, TestData.FACEBOOK_ICON);
+                value = CommonTask.isElementEnabledAndDisplayed(facebookIcon, TestData.FACEBOOK_ICON);
                 break;
             case TestData.LINKEDIN_ICON:
-                value = CommonTask.isElementEnabledAndDisplayed(driver, linkedinIcon, TestData.LINKEDIN_ICON);
+                value = CommonTask.isElementEnabledAndDisplayed(linkedinIcon, TestData.LINKEDIN_ICON);
                 break;
             case TestData.YOUTUBE_ICON:
-                value = CommonTask.isElementEnabledAndDisplayed(driver, youtubeIcon, TestData.YOUTUBE_ICON);
+                value = CommonTask.isElementEnabledAndDisplayed(youtubeIcon, TestData.YOUTUBE_ICON);
                 break;
             case TestData.INSTAGRAM_ICON:
-                value = CommonTask.isElementEnabledAndDisplayed(driver, instagramIcon, TestData.INSTAGRAM_ICON);
+                value = CommonTask.isElementEnabledAndDisplayed(instagramIcon, TestData.INSTAGRAM_ICON);
                 break;
         }
         return value;
@@ -198,43 +193,43 @@ public class ContactPage extends GeneralPage {
                 Assert.fail(Log4Test.error("Chosen param for 'getTextFor'  element is not correct : " + elementName));
                 break;
             case TestData.CONTACT_TAB:
-                value = CommonTask.getText(driver, contactTabLabel, TestData.CONTACT_TAB + TestData.LABEL);
+                value = CommonTask.getText(contactTab, TestData.CONTACT_TAB + TestData.LABEL);
                 break;
             case TestData.CONTACT_HEADER:
-                value = CommonTask.getText(driver, contactHeader, TestData.CONTACT_HEADER + TestData.LABEL);
+                value = CommonTask.getText(header, TestData.CONTACT_HEADER + TestData.LABEL);
                 break;
             case TestData.QUESTION:
-                value = CommonTask.getText(driver, questionlabel, TestData.QUESTION + TestData.LABEL);
+                value = CommonTask.getText(questionlabel, TestData.QUESTION + TestData.LABEL);
                 break;
             case TestData.SUGGESTION:
-                value = CommonTask.getText(driver, suggestionLabel, TestData.SUGGESTION + TestData.LABEL);
+                value = CommonTask.getText(suggestionLabel, TestData.SUGGESTION + TestData.LABEL);
                 break;
             case TestData.PHONE_DETAILS:
-                value = CommonTask.getText(driver, phoneDetailsLabel, TestData.PHONE_DETAILS + TestData.LABEL);
+                value = CommonTask.getText(phoneDetailsLabel, TestData.PHONE_DETAILS + TestData.LABEL);
                 break;
             case TestData.PHONE_NUMBER:
-                value = CommonTask.getText(driver, phoneNumber, TestData.PHONE_NUMBER + TestData.LABEL);
+                value = CommonTask.getText(phoneNumber, TestData.PHONE_NUMBER + TestData.LABEL);
                 break;
             case TestData.EMAIL:
-                value = CommonTask.getText(driver, emailLabel, TestData.EMAIL + TestData.LABEL);
+                value = CommonTask.getText(emailLabel, TestData.EMAIL + TestData.LABEL);
                 break;
             case TestData.EMAIL_ADDRESS:
-                value = CommonTask.getText(driver, emailAddress, TestData.EMAIL_ADDRESS + TestData.LABEL);
+                value = CommonTask.getText(emailAddress, TestData.EMAIL_ADDRESS + TestData.LABEL);
                 break;
             case TestData.WEBSITE:
-                value = CommonTask.getText(driver, websiteLabel, TestData.WEBSITE + TestData.LABEL);
+                value = CommonTask.getText(websiteLabel, TestData.WEBSITE + TestData.LABEL);
                 break;
             case TestData.WEBSITE_ADDRESS:
-                value = CommonTask.getText(driver, websiteAddress, TestData.WEBSITE_ADDRESS + TestData.LABEL);
+                value = CommonTask.getText(websiteAddress, TestData.WEBSITE_ADDRESS + TestData.LABEL);
                 break;
             case TestData.FOLLOW_US:
-                value = CommonTask.getText(driver, followUsLabel, TestData.FOLLOW_US + TestData.LABEL);
+                value = CommonTask.getText(followUsLabel, TestData.FOLLOW_US + TestData.LABEL);
                 break;
             case TestData.PHONE_CONTACT_DEVICE:
-                value = CommonTask.getText(driver, phoneContactAndroid, TestData.PHONE_CONTACT_DEVICE + TestData.LABEL);
+                value = CommonTask.getText(phoneContactAndroid, TestData.PHONE_CONTACT_DEVICE + TestData.LABEL);
                 break;
-            case TestData.GOOGLE_MAIL_WELCOME_MESSAGE:
-                value = CommonTask.getText(driver, googleMailWelcomeMessage, TestData.GOOGLE_MAIL_WELCOME_MESSAGE + TestData.LABEL);
+            case TestData.GOOGLE_SCREEN:
+                value = CommonTask.getText(googleScreen, TestData.GOOGLE_SCREEN + TestData.LABEL);
                 break;
         }
         return value;

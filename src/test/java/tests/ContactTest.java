@@ -23,7 +23,7 @@ public class ContactTest extends TestBase {
         setUp("Contact_01", "Verify the labels are correct on the Contact Screen for RO Profile");
 
         GeneralPage gp = new GeneralPage(appiumDriver);
-       // gp.selectLanguageProfile(TestData.RO);
+        gp.selectLanguageProfile(TestData.RO);
         gp.navigateTo(TestData.CONTACT_TAB);
 
         ContactPage cp = new ContactPage(appiumDriver);
@@ -44,7 +44,7 @@ public class ContactTest extends TestBase {
         softAssert.assertEquals(cp.getTextFor(TestData.PHONE_DETAILS), TestData.RO_PHONE_DETAILS, TestData.PHONE_DETAILS + TestData.LABEL_IS_NOT_CORRECT);
 
         Log4Test.test("Assert Phone number");
-        softAssert.assertEquals(cp.getTextFor(TestData.PHONE_NUMBER), TestData.BOTH_PHONE_NUMBER,  TestData.PHONE_NUMBER + TestData.IS_NOT_CORRECT);
+        softAssert.assertEquals(cp.getTextFor(TestData.PHONE_NUMBER), TestData.BOTH_PHONE_NUMBER_FORMAT_01,  TestData.PHONE_NUMBER + TestData.IS_NOT_CORRECT);
 
         Log4Test.test("Assert Email Address Label");
         softAssert.assertEquals(cp.getTextFor(TestData.EMAIL), TestData.RO_EMAIL_LABEL, TestData.EMAIL + TestData.LABEL_IS_NOT_CORRECT);
@@ -64,7 +64,7 @@ public class ContactTest extends TestBase {
         softAssert.assertAll();
     }
 
-    @Test(groups = {TestData.CONTACT_GROUP, TestData.UI_GROUP}, description = "Verify the labels are correct on the Contact Screen for EN Profile")
+    @Test(groups = {TestData.ANDROID_GROUP, TestData.CONTACT_GROUP, TestData.UI_GROUP}, description = "Verify the labels are correct on the Contact Screen for EN Profile")
     public void Contact_02() {
         setUp("Contact_02", "Verify the labels are correct on the Contact Screen for EN Profile");
 
@@ -91,7 +91,7 @@ public class ContactTest extends TestBase {
         softAssert.assertEquals(cp.getTextFor(TestData.PHONE_DETAILS), TestData.EN_PHONE_DETAILS, TestData.PHONE_DETAILS + TestData.LABEL_IS_NOT_CORRECT);
 
         Log4Test.test("Assert Phone number");
-        softAssert.assertEquals(cp.getTextFor(TestData.PHONE_NUMBER), TestData.BOTH_PHONE_NUMBER,  TestData.PHONE_NUMBER + TestData.IS_NOT_CORRECT);
+        softAssert.assertEquals(cp.getTextFor(TestData.PHONE_NUMBER), TestData.BOTH_PHONE_NUMBER_FORMAT_01,  TestData.PHONE_NUMBER + TestData.IS_NOT_CORRECT);
 
         Log4Test.test("Assert Email Address Label");
         softAssert.assertEquals(cp.getTextFor(TestData.EMAIL), TestData.EN_EMAIL_LABEL, TestData.EMAIL + TestData.LABEL_IS_NOT_CORRECT);
@@ -152,7 +152,6 @@ public class ContactTest extends TestBase {
 
         softAssert.assertAll();
 
-
     }
 
     @Test(groups = {TestData.CONTACT_GROUP, TestData.FNCT_GROUP}, description = "Verify call action")
@@ -167,13 +166,14 @@ public class ContactTest extends TestBase {
 
         cp.tapElement(TestData.PHONE_ARROW);
         Log4Test.test("Assert Correct number is displayed when pressing phone arrow");
-        Assert.assertEquals(cp.getTextFor(TestData.PHONE_CONTACT_DEVICE), TestData.BOTH_PHONE_NUMBER, "Correct number is displayed");
+        Assert.assertEquals(cp.getTextFor(TestData.PHONE_CONTACT_DEVICE), TestData.BOTH_PHONE_NUMBER_FORMAT_02, "Correct number is displayed");
 
         CommonTask.switchToRaiffApp(appiumDriver);
 
         cp.tapElement(TestData.PHONE_ICON);
         Log4Test.test("Assert Correct number is displayed when pressing phone icon");
-        Assert.assertEquals(cp.getTextFor(TestData.PHONE_CONTACT_DEVICE), TestData.BOTH_PHONE_NUMBER, "Correct number is displayed");
+        Assert.assertEquals(cp.getTextFor(TestData.PHONE_CONTACT_DEVICE), TestData.BOTH_PHONE_NUMBER_FORMAT_02, "Correct number is displayed");
+
     }
 
     @Test(groups = {TestData.CONTACT_GROUP, TestData.FNCT_GROUP}, description = "Verify email action")
@@ -188,14 +188,15 @@ public class ContactTest extends TestBase {
 
         cp.tapElement(TestData.EMAIL_ARROW);
         Log4Test.test("Assert GMail is opening when pressing email arrow");
-        Assert.assertEquals(cp.getTextFor(TestData.GOOGLE_MAIL_WELCOME_MESSAGE), "Welcome to Gmail", "Welcome message for GMail is correct");
+        CommonTask.tapButton(appiumDriver, Key.APP_SWITCH_BUTTON);
+        Assert.assertEquals(cp.getTextFor(TestData.GOOGLE_SCREEN), TestData.GMAIL + "sdasda", "Gmail screen title is correct");
 
         CommonTask.switchToRaiffApp(appiumDriver);
 
         cp.tapElement(TestData.EMAIL_ICON);
+        CommonTask.tapButton(appiumDriver, Key.APP_SWITCH_BUTTON);
         Log4Test.test("Assert GMail is opening when pressing email icon");
-        Assert.assertEquals(cp.getTextFor(TestData.GOOGLE_MAIL_WELCOME_MESSAGE), "Welcome to Gmail", "Welcome message for GMail is correct");
-
+        Assert.assertEquals(cp.getTextFor(TestData.GOOGLE_SCREEN), TestData.GMAIL + "something", "Gmail screen title is correct");
     }
 
     @Test(groups = {TestData.CONTACT_GROUP, TestData.FNCT_GROUP}, description = "Verify website action")

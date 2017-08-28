@@ -23,11 +23,6 @@ public class LocatorPage extends GeneralPage{
 
     // -------------------------------- Locators
 
-    // -------------- Tab
-
-    @FindBy(id = "ro.raiffeisen.smartmobile.development:id/largeLabel")
-    private MobileElement locatorTabLabel;
-
     // -------------- Header
 
     @FindBy(id = "ro.raiffeisen.smartmobile.development:id/tv_toolbar_title")
@@ -166,17 +161,17 @@ public class LocatorPage extends GeneralPage{
         switch (elementName) {
             default: Assert.fail(Log4Test.error("Chosen param for 'isDisplayed' element is not correct : " + elementName));
                 break;
-            case TestData.LOCATE_ME_BUTTON: value = CommonTask.isElementEnabledAndDisplayed(driver, locateMeButton, TestData.LOCATE_ME_BUTTON);
+            case TestData.LOCATE_ME_BUTTON: value = CommonTask.isElementEnabledAndDisplayed(locateMeButton, TestData.LOCATE_ME_BUTTON);
                 break;
-            case TestData.BEARING_RESET_BUTTON: value= CommonTask.isElementEnabledAndDisplayed(driver, rotateButton, TestData.BEARING_RESET_BUTTON);
+            case TestData.BEARING_RESET_BUTTON: value= CommonTask.isElementEnabledAndDisplayed(rotateButton, TestData.BEARING_RESET_BUTTON);
                 break;
-            case TestData.NAVIGATION_BUTTON: value = CommonTask.isElementEnabledAndDisplayed(driver, navigationButton, TestData.NAVIGATION_BUTTON);
+            case TestData.NAVIGATION_BUTTON: value = CommonTask.isElementEnabledAndDisplayed(navigationButton, TestData.NAVIGATION_BUTTON);
                 break;
-            case TestData.LOCATION_ICON: value = CommonTask.isElementEnabledAndDisplayed(driver, locationIcon, TestData.LOCATION_ICON);
+            case TestData.LOCATION_ICON: value = CommonTask.isElementEnabledAndDisplayed(locationIcon, TestData.LOCATION_ICON);
                 break;
-            case TestData.PHONE_ICON: value = CommonTask.isElementEnabledAndDisplayed(driver, phoneIcon, TestData.PHONE_ICON);
+            case TestData.PHONE_ICON: value = CommonTask.isElementEnabledAndDisplayed(phoneIcon, TestData.PHONE_ICON);
                 break;
-            case TestData.WORKING_HOURS_ICON: value = CommonTask.isElementEnabledAndDisplayed(driver, workingHoursIcon, TestData.WORKING_HOURS_ICON);
+            case TestData.WORKING_HOURS_ICON: value = CommonTask.isElementEnabledAndDisplayed(workingHoursIcon, TestData.WORKING_HOURS_ICON);
                 break;
         }
         return value;
@@ -190,49 +185,49 @@ public class LocatorPage extends GeneralPage{
                 Assert.fail(Log4Test.error("Chosen param for 'getTextFor'  element is not correct : " + elementName));
                 break;
             case TestData.LOCATOR_TAB:
-                value = CommonTask.getText(driver, locatorTabLabel, TestData.LOCATOR_TAB + TestData.LABEL);
+                value = CommonTask.getText(locatorTab, TestData.LOCATOR_TAB + TestData.LABEL);
                 break;
             case TestData.LOCATOR_HEADER:
-                value = CommonTask.getText(driver, locatorHeader, TestData.LOCATOR_HEADER + TestData.LABEL);
+                value = CommonTask.getText(locatorHeader, TestData.LOCATOR_HEADER + TestData.LABEL);
                 break;
             case TestData.SEARCH_BAR:
-                value = CommonTask.getText(driver, searchBar, TestData.SEARCH_BAR + TestData.PLACEHOLDER);
+                value = CommonTask.getText(searchBar, TestData.SEARCH_BAR + TestData.PLACEHOLDER);
                 break;
             case TestData.RECENT_HISTORY_TITLE:
-                value = CommonTask.getText(driver, recentHistoryTitle, TestData.RECENT_HISTORY_TITLE + TestData.LABEL);
+                value = CommonTask.getText(recentHistoryTitle, TestData.RECENT_HISTORY_TITLE + TestData.LABEL);
                 break;
             case TestData.RECENT_HISTORY_BUTTON:
-                value = CommonTask.getText(driver, recentHistoryButton, TestData.EN_RECENT_HISTORY_BUTTON + TestData.PLACEHOLDER);
+                value = CommonTask.getText(recentHistoryButton, TestData.EN_RECENT_HISTORY_BUTTON + TestData.PLACEHOLDER);
                 break;
             case TestData.SUGGESTIONS_TITLE:
-                value = CommonTask.getText(driver, suggestionsTitle, TestData.SUGGESTIONS_TITLE + TestData.LABEL);
+                value = CommonTask.getText(suggestionsTitle, TestData.SUGGESTIONS_TITLE + TestData.LABEL);
                 break;
             case TestData.YOU_HAVE_CHOSEN_LABEL:
-                value = CommonTask.getText(driver, youHaveChosenLabel, TestData.YOU_HAVE_CHOSEN_LABEL);
+                value = CommonTask.getText(youHaveChosenLabel, TestData.YOU_HAVE_CHOSEN_LABEL);
                 break;
             case TestData.CALL_BUTTON:
-                value = CommonTask.getText(driver, callButton, TestData.CALL_BUTTON);
+                value = CommonTask.getText(callButton, TestData.CALL_BUTTON);
                 break;
             case TestData.SHARE_BUTTON:
-                value = CommonTask.getText(driver, shareButton, TestData.SHARE_BUTTON);
+                value = CommonTask.getText(shareButton, TestData.SHARE_BUTTON);
                 break;
             case TestData.POI_NAME:
-                value = CommonTask.getText(driver, poiName, TestData.POI_NAME);
+                value = CommonTask.getText(poiName, TestData.POI_NAME);
                 break;
             case TestData.WALKING_DISTANCE:
-                value = CommonTask.getText(driver, walkingDistance, TestData.WALKING_DISTANCE);
+                value = CommonTask.getText( walkingDistance, TestData.WALKING_DISTANCE);
                 break;
             case TestData.STATUS:
-                value = CommonTask.getText(driver, status, TestData.STATUS);
+                value = CommonTask.getText(status, TestData.STATUS);
                 break;
             case TestData.STATUS_TIME_LEFT:
-                value = CommonTask.getText(driver, statusTime, TestData.STATUS_TIME_LEFT);
+                value = CommonTask.getText(statusTime, TestData.STATUS_TIME_LEFT);
                 break;
             case TestData.POI_ADDRESS:
-                value =CommonTask.getText(driver, poiAddress, TestData.POI_ADDRESS);
+                value =CommonTask.getText(poiAddress, TestData.POI_ADDRESS);
                 break;
             case TestData.POI_PHONE_NUMBER:
-                value = CommonTask.getText(driver, poiPhoneNumber, TestData.POI_PHONE_NUMBER);
+                value = CommonTask.getText(poiPhoneNumber, TestData.POI_PHONE_NUMBER);
                 break;
         }
         return value;
@@ -245,15 +240,15 @@ public class LocatorPage extends GeneralPage{
      */
     public String getTextWorkingHoursForDay(String day){
         MobileElement weekDay = (MobileElement)driver.findElementsById("ro.raiffeisen.smartmobile.development:id/tv_" + day);
-        return CommonTask.getText(driver, weekDay, "day of week : " + day);
+        return CommonTask.getText( weekDay, "day of week : " + day);
     }
 
     public String getTextAlertTitle(String type){
-        return CommonTask.getText(driver, alertTitle, "alert title " + type);
+        return CommonTask.getText( alertTitle, "alert title " + type);
     }
 
     public String getTextAlerMessage(String type){
-        return CommonTask.getText(driver, alertMessage, "alert message " + type);
+        return CommonTask.getText( alertMessage, "alert message " + type);
     }
 
     public void searchForPOI(String poiName){

@@ -22,12 +22,6 @@ public class InterestRatesPage extends GeneralPage{
 
     // -------------------------------- Locators
 
-    // -------------- Tab
-
-    @FindBy(id = "ro.raiffeisen.smartmobile.development:id/largeLabel")
-    private MobileElement interestRatestTabLabel;
-
-
     // -------------- Header
 
     @FindBy(id = "ro.raiffeisen.smartmobile.development:id/tv_toolbar_title")
@@ -110,7 +104,7 @@ public class InterestRatesPage extends GeneralPage{
     // ---------- Get text labels methods
 
     public String getTextInterestRatesTab(){
-        return interestRatestTabLabel.getText();
+        return interestRatesTab.getText();
     }
 
     public String getTextHeaderInterestRates(){

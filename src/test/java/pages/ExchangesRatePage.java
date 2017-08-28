@@ -21,11 +21,6 @@ public class ExchangesRatePage extends GeneralPage{
 
     // -------------------------------- Locators
 
-    // -------------- Tab
-
-    @FindBy(id = "ro.raiffeisen.smartmobile.development:id/largeLabel")
-    private MobileElement exchangeRatestTabLabel;
-
     // -------------- Header
 
     @FindBy(id = "ro.raiffeisen.smartmobile.development:id/tv_toolbar_title")
