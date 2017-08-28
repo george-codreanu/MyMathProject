@@ -284,6 +284,10 @@ public class ContactPage extends GeneralPage {
         return value;
     }
 
+    public String getToFieldFromMail(){
+        CommonTask.getAttributeAsText(mailToField,TestData.VALUE,"mail TO field")
+    }
+
     public void cancelCall(){
 
         CommonTask.tapButton(driver,cancelCall,TestData.CANCEL_CALL_BUTTON);
