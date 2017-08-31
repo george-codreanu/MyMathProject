@@ -2,6 +2,7 @@ package pages;
 
 import AutomationFramework.CommonTask;
 import AutomationFramework.TestData;
+import AutomationFramework.Waiting;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.FindsByAccessibilityId;
 import io.appium.java_client.MobileElement;
@@ -11,9 +12,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.internal.FindsByName;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import utils.Log4Test;
+
+import java.util.function.Function;
 
 
 /**
@@ -76,8 +83,11 @@ public class ContactPage extends GeneralPage {
     private MobileElement phoneDetailsLabel;
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/text_phone_number")
-    @iOSFindBy(id = "\u202A\u202D+40 (21) 306 55 55\u202C\u202C")
+    @iOSFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"+4 021 306 55 55\"]")
     private MobileElement phoneNumber;
+
+    @iOSFindBy(id = "\u202A\u202D+40 (21) 306 55 55\u202C\u202C")
+    private MobileElement calledPhoneNumber;
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/image_arrow_phone")
     @iOSFindBy(xpath = "//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]")
@@ -107,6 +117,15 @@ public class ContactPage extends GeneralPage {
     @iOSFindBy(xpath = "//XCUIElementTypeTextField[@name=\"toField\"]")
     private MobileElement mailToField;
 
+    @iOSFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"New Message\"]")
+    private MobileElement iOSMailLabel;
+
+    @iOSFindBy(xpath = "//XCUIElementTypeButton[@name=\"Return to SmartMobile\"]")
+    private MobileElement backToSmartMobile;
+
+    @iOSFindBy(id = "Return to SmartMobile")
+    private MobileElement BackToSmartMobile2;
+
     // -------------- Website
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/rl_website")
@@ -127,6 +146,13 @@ public class ContactPage extends GeneralPage {
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/image_arrow_website")
     @iOSFindBy(xpath = "//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[6]/XCUIElementTypeImage[2]")
     private MobileElement websiteArrow;
+
+    @iOSFindBy(xpath = "//XCUIElementTypeLink[@name=\"Afla mai multe\"]")
+    private MobileElement websiteCarousel;
+
+    @iOSFindBy(xpath = "//XCUIElementTypeOther[@name=\"URL\"]")
+    private MobileElement URLField;
+
 
 
     // -------------- Social
@@ -222,6 +248,16 @@ public class ContactPage extends GeneralPage {
             case TestData.INSTAGRAM_ICON:
                 value = CommonTask.isElementEnabledAndDisplayed(instagramIcon, TestData.INSTAGRAM_ICON);
                 break;
+            case TestData.iOS_MAIL_TO_FIELD:
+                value = CommonTask.isElementEnabledAndDisplayed(iOSMailLabel,"iOS Mail Label");
+                break;
+            case TestData.CONTACT_TAB:
+                value = CommonTask.isElementEnabledAndDisplayed(contactTabLabel,"Contact tab label");
+                break;
+            case TestData.iOS_BROWSER:
+                Waiting.visibilityOfElement(driver, URLField,"iOS URL Field");
+                value = CommonTask.isEnabled(URLField,"iOS URL field");
+                break;
         }
         return value;
     }
@@ -276,16 +312,25 @@ public class ContactPage extends GeneralPage {
                 value = CommonTask.getText(phoneContactAndroid, TestData.PHONE_CONTACT_DEVICE + TestData.LABEL);
                 break;
             case TestData.CALLED_NUMBER:
-                value = CommonTask.getText(phoneNumber, TestData.CALLED_NUMBER + TestData.LABEL);
+                value = CommonTask.getText(calledPhoneNumber, TestData.CALLED_NUMBER + TestData.LABEL);
                 break;
             case TestData.iOS_MAIL_TO_FIELD:
-                value = mailToField.getAttribute("value");
+                value = CommonTask.getAttributeAsText(mailToField, TestData.VALUE,"iOS Mail 'TO' field");
+                break;
+            case TestData.SAFARI_URL:
+                Waiting.visibilityOfElement(driver,URLField,TestData.MEDIUM_WAIT,"Safari URL field");
+                value = CommonTask.getAttributeAsText(URLField,TestData.VALUE, "Safari URL field");
+                break;
         }
         return value;
     }
 
     public String getToFieldFromMail(){
        return CommonTask.getAttributeAsText(mailToField,TestData.VALUE,"mail 'TO' field");
+    }
+
+    public void backToApp(){
+        CommonTask.tapButton(driver,BackToSmartMobile2,"return to app button");
     }
 
     public void cancelCall(){
@@ -295,13 +340,15 @@ public class ContactPage extends GeneralPage {
 
     public boolean isSimAlertDisplayed() {
         driver.getPageSource();
-        if (simAlertButton.getSize() != null) {
-            return true;
-        }
-        return false;
+        return  simAlertButton.getSize() != null;
+
+
     }
 
     public void closeSimAlert(){
         CommonTask.tapButton(driver, simAlertButton,TestData.SIM_OK_BUTTON);
     }
+
 }
+
+

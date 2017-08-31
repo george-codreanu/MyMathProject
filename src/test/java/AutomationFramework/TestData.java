@@ -55,7 +55,7 @@ public class TestData {
     public static final String CONTACT_GROUP  = "Contact";
     public static final String LOCATOR_GROUP = "Locator";
     public static final String INTEREST_RATES_GROUP = "IntRate";
-
+    public static final String EXCHANGE_RATES_GROUPS = "ExRate";
     // ---------- Type Group
     public static final String UI_GROUP = "UI";
     public static final String FNCT_GROUP = "Functionality";
@@ -224,6 +224,7 @@ public class TestData {
     public static final String BOTH_PHONE_NUMBER_FORMAT_02= "+40 21 306 5555";
     public static final String BOTH_EMAIL_ADDRESS = "online@raiffeisen.ro";
     public static final String BOTH_WEBSITE_ADDRESS = "www.raiffeisen.ro";
+    public static final String BOTH_WEBSITE_LINK = "http://www.raiffeisen.ro";
     public static final String iOS_CALLED_PHONE_NUMBER = "\u202A\u202D+40 (21) 306 55 55\u202C\u202C";
 
     // --- RO
@@ -246,16 +247,59 @@ public class TestData {
 
     public static final String CANCEL_CALL_BUTTON = "cancel call button";
     public static final String SIM_OK_BUTTON = " sim alert OK button";
+    public static final String iOS_BROWSER = "iOS Browser";
+    public static final String SAFARI_URL = "website URL";
+    public static final String SAFARI_CORECT_RF_URL = "‎raiffeisen.ro, secure and validated connection";
 
 
     // ----------------------------------------------------- Exchange Rates
     // --- elements
     public static final String EXCHANGE_RATES_TAB = "exchange rates tab";
     public static final String EXCHANGE_RATES_SUBTAB = "exchange rates subtab";
+    public static final String EXCHANGE_RATES_HEADER = "exchange rates header";
+    public static final String EXCHANGE_RATES_FIRST_SUBTAB = "exchange rates first subtab";
+    public static final String EXCHANGE_RATES_SECOND_SUBTAB = "exchange rates second subtab";
     public static final String COVERTER_SUBTAB = "converter subtab";
+    public static final String EXCHANGE_RATES_EVOLUTION = "Evolution rates";
+    public static final String EXCHANGE_RATES_CURRENCY = "currency";
+    public static final String EXCHANGE_RATES_RF_BUYS = "'Raiffeisen buys'";
+    public static final String EXCHANGE_RATES_RF_SELLS = "'Raiffeisen sells";
+    public static final String EXCHANGE_RATES_NBR_RATE = "NBR Rate";
+    public static final String EXCHANGE_RATES_LAST_UPDATED = "'Last update' field";
+    public static final String EXCHANGE_RATES_FIRST_INPUT_FIELD = "converter first input field";
+    public static final String EXCHANGE_RATES_SECOND_INPUT_FIELD = "converter second input field";
+    public static final String EXCHANGE_RATES_PERFORM_EXCHANGE_BTN = "perform exchange button";
+    public static final String EXCHANGE_RATES_SELECTED_NBR_RATE = "bnr rate for selected currency";
+    public static final String EXCHANGE_RATES_NBR_CHART = "NBR chart";
     // --- BOTH LANGUAGES
+    public static final String[] EXCHANGE_RATES_CURRENCIES = new String[]{"EUR", "USD", "GBP", "CHF", "AUD", "BGN", "CAD", "DKK", "HUF", "JPY", "NOK", "PLN", "SEK"};
     // --- RO
+    public static final String RO_EXCHANGE_RATES_TAB = "Curs Valutar";
+    public static final String RO_EXCHANGE_RATES_HEADER = "Rate de schimb";
+    public static final String RO_EXCHANGE_RATES_FIRST_SUBTAB = "Rate de schimb";
+    public static final String RO_EXCHANGE_RATES_SECOND_SUBTAB = "Convertor";
+    public static final String RO_EXCHANGE_RATES_EVOLUTION = "Evoluție curs BNR";
+    public static final String RO_EXCHANGE_RATES_CURRENCY = "MONEDA";
+    public static final String RO_EXCHANGE_RATES_RF_BUYS = "RAIFFEISEN CUMPĂRĂ";
+    public static final String RO_EXCHANGE_RATES_RF_SELLS = "RAIFFEISEN  VINDE";
+    public static final String RO_EXCHANGE_RATES_NBR_RATE = "CURS BNR";
+    public static final String RO_EXCHANGE_RATES_FIRST_INPUT_FIELD = "Introduceți suma";
+    public static final String RO_EXCHANGE_RATES_SECOND_INPUT_FIELD = "Introduceți suma";
+    public static final String RO_EXCHANGE_RATES_PERFORM_EXCHANGE_BTN = "Efectuează schimbul";
+
     // --- EN
+    public static final String EN_EXCHANGE_RATES_TAB = "Exchange";
+    public static final String EN_EXCHANGE_RATES_HEADER = "Exchange rates";
+    public static final String EN_EXCHANGE_RATES_FIRST_SUBTAB = "Exchange rates";
+    public static final String EN_EXCHANGE_RATES_SECOND_SUBTAB = "Converter";
+    public static final String EN_EXCHANGE_RATES_EVOLUTION = "NBR rates evolution";
+    public static final String EN_EXCHANGE_RATES_CURRENCY = "CURRENCY";
+    public static final String EN_EXCHANGE_RATES_RF_BUYS = "RAIFFEISEN  BUYS";
+    public static final String EN_EXCHANGE_RATES_RF_SELLS = "RAIFFEISEN  SELLS";
+    public static final String EN_EXCHANGE_RATES_NBR_RATE = "NBR RATE";
+    public static final String EN_EXCHANGE_RATES_FIRST_INPUT_FIELD = "Enter amount";
+    public static final String EN_EXCHANGE_RATES_SECOND_INPUT_FIELD = "Enter amount";
+    public static final String EN_EXCHANGE_RATES_PERFORM_EXCHANGE_BTN = "Perform exchange";
 
 
 

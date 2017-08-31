@@ -8,6 +8,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSFindBy;
 import io.appium.java_client.MobileElement;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 import utils.Log4Test;
 
 
@@ -158,6 +159,7 @@ public class LoginPage extends GeneralPage{
         return value;
     }
 
+    @Test
     public String getAttributeFor(String elementName){
         String value = "";
 
@@ -192,5 +194,6 @@ public class LoginPage extends GeneralPage{
     public boolean isAuthButtonEnabled(){
         return CommonTask.isEnabled(authenticationButton, "authentification button");
     }
+
 
 }

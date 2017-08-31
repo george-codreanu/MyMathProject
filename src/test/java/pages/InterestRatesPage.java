@@ -5,6 +5,7 @@ import AutomationFramework.TestData;
 import AutomationFramework.Waiting;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.iOSFindBy;
 import org.junit.Assert;
 import org.openqa.selenium.support.FindBy;
 import utils.Log4Test;
@@ -25,6 +26,7 @@ public class InterestRatesPage extends GeneralPage{
     // -------------- Header
 
     @FindBy(id = "ro.raiffeisen.smartmobile.development:id/tv_toolbar_title")
+    @iOSFindBy(xpath = "//XCUIElementTypeNavigationBar[@name=\"Rate dobândă\"]")
     private MobileElement interestRatesHeader;
 
     @FindBy(id = "ro.raiffeisen.smartmobile.development:id/item_share")
@@ -54,6 +56,7 @@ public class InterestRatesPage extends GeneralPage{
     private MobileElement oneMonthSlide;
 
     @FindBy(xpath = "//*[@id=\"root\"]/div/div[1]/div/div/div/div[31]/div")
+    @iOSFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"1 MONTH\"]")
     private MobileElement oneMonthLabel;
 
     public String oneMonthLabelTest(){
@@ -104,11 +107,11 @@ public class InterestRatesPage extends GeneralPage{
     // ---------- Get text labels methods
 
     public String getTextInterestRatesTab(){
-        return interestRatesTab.getText();
+        return CommonTask.getText(interestRatesTab,TestData.INTEREST_RATES_TAB);
     }
 
     public String getTextHeaderInterestRates(){
-        return interestRatesHeader.getText();
+        return CommonTask.getText(interestRatesHeader,TestData.INTEREST_RATES_HEADER);
     }
 
     public String getTextSubTab(String subTab){

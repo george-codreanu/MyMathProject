@@ -55,10 +55,12 @@ public abstract class TestBase {
                 capabilities2.setCapability("automationName", "XCUITest");
                 capabilities2.setCapability("platformName", "iOS");
                 capabilities2.setCapability("deviceName", "iPhone");
-                capabilities2.setCapability("udid","58af6ab82861d2cc2bf2d621758a2a2d29a9134b");
+                capabilities2.setCapability("udid","58af6ab82861d2cc2bf2d621758a2a2d29a9134b"); //real
+                //capabilities2.setCapability("udid","C713E473-CE08-4139-8A96-5C5424956BC6"); //sim
                 capabilities2.setCapability("platformVersion","10.2");
                 capabilities2.setCapability("autoAcceptAlerts",true);
-                capabilities2.setCapability("newCommandTimeout", 200);
+                capabilities2.setCapability("newCommandTimeout", 500);
+                capabilities2.setCapability("screenshotWaitTimeout",300);
                 appiumDriver = new IOSDriver<MobileElement>(remoteAddress, capabilities2);
                 break;
         }

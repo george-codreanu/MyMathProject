@@ -29,7 +29,7 @@ public class LocatorTest extends TestBase {
         gp.navigateTo(TestData.LOCATOR_TAB);
 
         LocatorPage lp = new LocatorPage(appiumDriver);
-
+        System.out.println(appiumDriver.getPageSource());
         Log4Test.test("Assert Locator Tab Label");
         softAssert.assertEquals(lp.getTextFor(TestData.LOCATOR_TAB), TestData.BOTH_LOCATOR, TestData.LOCATOR_TAB + TestData.LABEL_IS_NOT_CORRECT);
 

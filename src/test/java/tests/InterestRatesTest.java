@@ -24,13 +24,13 @@ public class InterestRatesTest extends TestBase{
 
         InterestRatesPage irp = new InterestRatesPage(appiumDriver);
 
-        Log4Test.test("Assert Contact Tab Label");
+        Log4Test.test("Assert Interest rate Tab Label");
         softAssert.assertEquals(irp.getTextInterestRatesTab(), "Rate dobândă", "Interest Rate Tab  label is correct");
 
-        Log4Test.test("Assert Contact Tab Label");
+        Log4Test.test("Assert Interest rate header Label");
         softAssert.assertEquals(irp.getTextHeaderInterestRates(), "Rate dobândă", "Interest Rate Header  label is correct");
 
-        irp.oneMonthLabelTest();
+       // irp.oneMonthLabelTest();
         System.out.println();
 
   /*      Log4Test.test("Assert ROBOR SubTab Label");

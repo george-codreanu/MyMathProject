@@ -73,12 +73,15 @@ public class GeneralPage {
     public MobileElement contactTab;
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/navigation_locator")
+    @iOSFindBy(xpath="//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTabBar/XCUIElementTypeButton[3]")
     public MobileElement locatorTab;
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/navigation_exchange")
+    @iOSFindBy(xpath = "//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTabBar/XCUIElementTypeButton[4]")
     public MobileElement exchangeRatesTab;
 
     @AndroidFindBy(id = "ro.raiffeisen.smartmobile.development:id/navigation_interest_rates")
+    @iOSFindBy(xpath= "//XCUIElementTypeApplication/XCUIElementTypeWindow/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTabBar/XCUIElementTypeButton[5                       ]")
     public MobileElement interestRatesTab;
 
 

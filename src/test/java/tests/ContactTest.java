@@ -200,7 +200,7 @@ public class ContactTest extends TestBase {
         cp.cancelCall();
 
         Log4Test.test("Assert Contact Tab Label");
-        softAssert.assertEquals(cp.getTextFor(TestData.CONTACT_TAB), TestData.BOTH_CONTACT, TestData.CONTACT_TAB + TestData.LABEL_IS_NOT_CORRECT);
+        softAssert.assertEquals(cp.getTextFor(TestData.CONTACT_TAB),TestData.BOTH_CONTACT);
 
         softAssert.assertAll();
     }
@@ -225,7 +225,7 @@ public class ContactTest extends TestBase {
         cp.tapElement(TestData.EMAIL_ICON);
         CommonTask.tapButton(appiumDriver, Key.APP_SWITCH_BUTTON);
         Log4Test.test("Assert GMail is opening when pressing email icon");
-        Assert.assertEquals(cp.getTextFor(TestData.GOOGLE_SCREEN), TestData.GMAIL + "something", "Gmail screen title is correct");
+        Assert.assertEquals(cp.getTextFor(TestData.GOOGLE_SCREEN), TestData.GMAIL, "Gmail screen title is correct");
     }
 
     @Test(groups = {TestData.CONTACT_GROUP, TestData.FNCT_GROUP}, description = "Verify email action")
@@ -239,16 +239,20 @@ public class ContactTest extends TestBase {
         ContactPage cp = new ContactPage(appiumDriver);
         cp.tapElement(TestData.EMAIL_ARROW);
         Log4Test.test("Assert Mail is opening when pressing email arrow");
-        assert .
+        Assert.assertTrue(cp.isElementEnabledAndDisplayed(TestData.iOS_MAIL_TO_FIELD),TestData.iOS_MAIL_TO_FIELD + TestData.LABEL);
+        Log4Test.test("Assert TO field is correctly completed");
         Assert.assertEquals(cp.getTextFor(TestData.iOS_MAIL_TO_FIELD),TestData.BOTH_EMAIL_ADDRESS,"TO' field filled incorrectly -> ");
+        cp.backToApp();
 
+        Log4Test.test("Assert Contact Tab Label");
+        softAssert.assertEquals(cp.getTextFor(TestData.CONTACT_TAB), TestData.BOTH_CONTACT, TestData.CONTACT_TAB + TestData.LABEL_IS_NOT_CORRECT);
 
     }
 
     @Test(groups = {TestData.CONTACT_GROUP, TestData.FNCT_GROUP}, description = "Verify website action")
-    public void Contact_06() {
+    public void Contact_06_Android() {
 
-        setUp("Contact_06", "Verify website action");
+        setUp("Contact_06_Android", "Verify website action");
 
         GeneralPage gp = new GeneralPage(appiumDriver);
         gp.navigateTo(TestData.CONTACT_TAB);
@@ -265,6 +269,28 @@ public class ContactTest extends TestBase {
         cp.tapElement(TestData.WEBSITE_ICON);
         Log4Test.test("Assert Browser chooser is opening when pressing website icon");
         Assert.assertTrue(cp.isJustOnceButtonDisplayed(), "Browser chooser is present");
+    }
+
+    @Test(groups = {TestData.CONTACT_GROUP, TestData.FNCT_GROUP}, description = "Verify website action")
+    public void Contact_06_iOS(){
+
+        setUp("Contact_06_iOS", "Verify website action");
+
+        GeneralPage gp = new GeneralPage(appiumDriver);
+        gp.navigateTo(TestData.CONTACT_TAB);
+
+        ContactPage cp = new ContactPage(appiumDriver);
+
+        cp.tapElement(TestData.WEBSITE_ARROW);
+        Log4Test.test("Assert Browser chooser is opening when pressing website arrow");
+        Assert.assertTrue(cp.isElementEnabledAndDisplayed(TestData.iOS_BROWSER),"Browser is not open");
+
+
+        Log4Test.test("Assert Correct link has been opened on browser");
+        Assert.assertEquals(cp.getTextFor(TestData.SAFARI_URL),TestData.SAFARI_CORECT_RF_URL,"Incorrect link displayed"); // might fail, must return upon it
+        cp.backToApp();
+
+
     }
 
     @Test
